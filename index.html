@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMate - Mood Based Suggestion App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .moods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .mood-btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .mood-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .suggestion-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .suggestion-box h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>MoodMate 😄</h1>
+  <div class="moods">
+    <button class="mood-btn" onclick="showSuggestion('happy')">Happy</button>
+    <button class="mood-btn" onclick="showSuggestion('sad')">Sad</button>
+    <button class="mood-btn" onclick="showSuggestion('tired')">Tired</button>
+    <button class="mood-btn" onclick="showSuggestion('bored')">Bored</button>
+    <button class="mood-btn" onclick="showSuggestion('excited')">Excited</button>
+  </div>
+
+  <div class="suggestion-box" id="suggestionBox">
+    <h2>Your Suggestions Will Appear Here 💡</h2>
+    <p>Select your mood to get suggestions!</p>
+  </div>
+
+  <script>
+    const suggestions = {
+      happy: {
+        playlist: "Upbeat Vibes",
+        movie: "Inside Out",
+        tip: "Share your happiness with someone today!",
+        quote: "Happiness is contagious. Spread it!"
+      },
+      sad: {
+        playlist: "Lo-Fi Chill",
+        movie: "The Pursuit of Happyness",
+        tip: "Take a deep breath and treat yourself with kindness.",
+        quote: "This too shall pass."
+      },
+      tired: {
+        playlist: "Relaxing Acoustic",
+        movie: "Soul",
+        tip: "Drink some water and take a 5-minute break.",
+        quote: "Rest is productive too."
+      },
+      bored: {
+        playlist: "Upbeat Pop Hits",
+        movie: "Jumanji: Welcome to the Jungle",
+        tip: "Try something new — draw, write, or cook!",
+        quote: "Boredom is just creativity waiting to happen."
+      },
+      excited: {
+        playlist: "Party Anthems",
+        movie: "Spider-Man: No Way Home",
+        tip: "Channel your energy into something fun!",
+        quote: "Let your excitement light up the world."
+      }
+    };
+
+    function showSuggestion(mood) {
+      const suggestion = suggestions[mood];
+      const box = document.getElementById('suggestionBox');
+      box.innerHTML = `
+        <h2>You're feeling ${mood.charAt(0).toUpperCase() + mood.slice(1)} 🎧</h2>
+        <p><strong>🎵 Playlist:</strong> ${suggestion.playlist}</p>
+        <p><strong>🎬 Movie:</strong> ${suggestion.movie}</p>
+        <p><strong>☕ Tip:</strong> ${suggestion.tip}</p>
+        <p><strong>💬 Quote:</strong> “${suggestion.quote}”</p>
+      `;
+    }
+  </script>
+</body>
+</html>
